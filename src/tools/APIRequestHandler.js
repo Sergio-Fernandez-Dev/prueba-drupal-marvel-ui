@@ -5,7 +5,7 @@ class APIRequestHandler {
         this.apiKeyString = "";
     }
 
-    async get(endpoint, id = "") {
+    async getData(endpoint, id = "") {
 
         const response = await fetch(this.url + endpoint + id + this.apiKeyString);
     
@@ -19,7 +19,7 @@ class APIRequestHandler {
         return jsonResponse.data.results;
     }
     
-    async function postData(endpoint, data) {
+    async postData(endpoint, data) {
 
         const response = await fetch(url + endpoint + apiKeyString, {
             method: "POST",
@@ -35,7 +35,8 @@ class APIRequestHandler {
         }
     }
 
-    async function getApiKey(url, endpoint) {
+    async getAPIKey(url, endpoint) {
+
         const response = await fetch(url + endpoint);
 
         if (!response.ok) {
@@ -49,7 +50,8 @@ class APIRequestHandler {
         _setApiKeyString(apiKey.timestamp, apiKey.publicKey, apiKey.hash);
     }
 
-    function _setApiKeyString(timestamp, publicKey, hash) {
+    _setApiKeyString(timestamp, publicKey, hash) {
+
         this.apiKeyString = `?ts=${timestamp}&apiKey=${publicKey}&hash=${hash}`;
     }
 }
