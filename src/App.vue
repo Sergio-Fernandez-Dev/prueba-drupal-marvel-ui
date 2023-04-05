@@ -5,7 +5,7 @@ import { RouterView } from 'vue-router'
 <template>
   <header>
     <div class="wrapper">
-      <nav></nav>
+      <nav>PRUEBA DRUPAL MARVEL</nav>
     </div>
   </header>
 
@@ -15,40 +15,28 @@ import { RouterView } from 'vue-router'
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  height: 75px;
+  background-color: blue;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
+header .wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: chocolate;
+  }
 
 nav {
   width: 100%;
+  height: 100%;
   font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
 }
 </style>
