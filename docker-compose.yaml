@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+
+  ui:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - ${UI_LOCAL_PORT}:${UI_DOCKER_PORT}
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  ui:
