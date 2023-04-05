@@ -1,15 +1,23 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterLink, RouterView } from 'vue-router';
+
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>PRUEBA DRUPAL MARVEL</nav>
-    </div>
+  <header class="header">
+    <h1 class="header__title">PRUEBA DRUPAL MARVEL</h1>
   </header>
+  <nav class="nav">
+    <RouterLink :to="{ name: 'characters' }" class="nav__link">Personajes</RouterLink>
+    <RouterLink :to="{ name: 'comics' }" class="nav__link">Comics</RouterLink>
+    <RouterLink :to="{ name: 'characters' }" class="nav__link">Favoritos</RouterLink>
+  </nav>
 
   <RouterView />
+
+  <footer class="footer">
+    <p class="footer__text">© 2021 PRUEBA DRUPAL MARVEL</p>
+  </footer>
 </template>
 
 <style scoped>
@@ -23,12 +31,12 @@ header {
 }
 
 header .wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: chocolate;
-  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: chocolate;
+}
 
 nav {
   width: 100%;
