@@ -6,6 +6,10 @@ services:
       context: .
       dockerfile: Dockerfile
     env_file: .env
+    environment:
+      MARVEL_API_URL: ${MARVEL_API_URL}
+      BACKEND_API_URL: ${BACKEND_API_URL_PATH}${BACKEND_PORT}
+
     ports:
       - ${UI_LOCAL_PORT}:${UI_DOCKER_PORT}
     volumes:
