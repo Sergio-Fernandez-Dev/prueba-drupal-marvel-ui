@@ -33,6 +33,8 @@ class APIRequestHandler {
             const message = `An error has occured: ${response.status}`;
             throw new Error(message);
         }
+
+        return response.ok;
     }
 
     async deleteData(endpoint, id) {
