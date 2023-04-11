@@ -35,6 +35,20 @@ class APIRequestHandler {
         }
     }
 
+    async deleteData(endpoint, id) {
+
+        const response = await fetch(this.url + endpoint + id, {
+            method: "DELETE",
+        });
+
+        if (!response.ok) {
+            const message = `An error has occured: ${response.status}`;
+            throw new Error(message);
+        }
+
+        return response.ok;
+    }
+
     async getAPIKey(url, endpoint) {
 
         const response = await fetch(url + endpoint);
