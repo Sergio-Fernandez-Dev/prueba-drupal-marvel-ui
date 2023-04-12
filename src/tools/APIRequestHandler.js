@@ -21,10 +21,13 @@ class APIRequestHandler {
     
     async postData(endpoint, data) {
 
-        const response = await fetch(url + endpoint + apiKeyString, {
+        const response = await fetch(this.url + endpoint + this.apiKeyString, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Accept": "application/json",
+                "mode": "cors",
+                "Access-Control-Allow-Origin": "*",
             },
             body: JSON.stringify(data),
         });
