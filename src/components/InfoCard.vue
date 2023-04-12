@@ -1,27 +1,32 @@
 <script setup>
 import APIRequestHandler from '@/tools/APIRequestHandler';
+import { ref } from 'vue';
 
-defineProps({
+const props = defineProps({
   item: Object,
   itemCategory: String,
   fav: Boolean,
 });
 
-const APIhandler = new APIRequestHandler("https//localhost:3000");
+const favStatus = ref(props.fav);
+
+const APIhandler = new APIRequestHandler("https://localhost:52432");
 
 const getDescription = (item) => {
   return item.description ? item.description : 'Description not available';
 }
 
-const addItemToFavorites = async (item, handler) => {
-  if (handler.postData(`/marvel/favorites/${itemCategory}`, item)) {
-    fav = true;
+const addItemToFavorites = async (item, handler, category) => {
+  const itemId = {'id': item.id};
+  
+  if (await handler.postData(`/marvel/favorites/${category}`, itemId)) {
+    favStatus.value = true;
   }
 }
 
 const removeItemFromFavorites = async (id, handler) => {
-  if (handler.deleteData(`/marvel/favorites/${itemCategory}`, id)) {
-    fav = false;
+  if (await handler.deleteData(`/marvel/favorites/${itemCategory}`, id)) {
+    favStatus.value = false;
   }
 }
 
@@ -37,15 +42,15 @@ const removeItemFromFavorites = async (id, handler) => {
     <div class="card__footer">
       <button 
         class="button" 
-        v-if="!fav" 
-        onclick="addItemToFavorites(item, APIhandler)"
+        v-if="!favStatus" 
+        @click.prevent= "addItemToFavorites(item, APIhandler, itemCategory)"
       >
         Añadir a favoritos
       </button>
       <button 
         class="button--faved" 
         v-else 
-        onclick="removeItemFromFavorites(item.id, APIhandler)"
+        @click.prevent="removeItemFromFavorites(item.id, APIhandler)"
       >
         Borrar de favoritos
       </button>
