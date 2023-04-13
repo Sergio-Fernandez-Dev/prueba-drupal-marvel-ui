@@ -8,9 +8,8 @@ import { RouterLink, RouterView } from 'vue-router';
     <h1 class="header__title">PRUEBA DRUPAL MARVEL</h1>
   </header>
   <nav class="nav">
-    <RouterLink :to="{ name: 'characters' }" class="nav__link">Personajes</RouterLink>
-    <RouterLink :to="{ name: 'comics' }" class="nav__link">Comics</RouterLink>
-    <RouterLink :to="{ name: 'characters' }" class="nav__link">Favoritos</RouterLink>
+    <RouterLink :to="{ name: 'home' }" class="nav__link">Home</RouterLink>
+    <RouterLink :to="{ name: 'favorites' }" class="nav__link">Favoritos</RouterLink>
   </nav>
 
   <RouterView />
